@@ -1,0 +1,17 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{bayesnet}
+\begin{document}
+\begin{figure}
+  \centering
+  \tikz{ %
+    \node[obs] (y) {y} ; %
+    \node[obs, left=of y] (x) {x} ; %
+    \node[latent, below=of x] (sigma) {$\sigma$} ; %
+    \node[latent, above=of x] (beta) {$\beta$} ; %
+    \plate[inner sep=0.25cm, xshift=-0.12cm, yshift=0.12cm] {plate1} {(y) (x)} {N}; %
+    \edge {sigma} {y} ; %
+    \edge {x,beta} {y} ; %
+  }
+\end{figure}
+\end{document}
